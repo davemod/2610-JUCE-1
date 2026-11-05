@@ -9,8 +9,8 @@ Write a minimal CMake project; distinguish configure/build/run; inspect, commit,
 ## Tasks
 
 1. Build the supplied project. Explain minimum version, project, executable target, and its source list.
-2. In a new folder, recreate this small project and CMakeLists.txt with notes allowed. Build it in a fresh build directory.
-3. Build again without editing; observe no recompilation. Edit source/main.cpp and rebuild.
+2. In a new folder, recreate this small project and CMakeLists.txt. Build it in a fresh build directory.
+3. Build again without editing; observe no recompilation. Edit source/Tempo.cpp and rebuild; only Tempo.cpp is recompiled. Then edit the message in source/Tempo.h and rebuild; both .cpp files are recompiled because both include that header. The #pragma message lines show which files are processed.
 4. In the Git repository you are using for the course, run git status and git diff. Make a baseline commit before editing the session. If Git asks, configure your author name/email for this repository.
 5. Change only the printed label. Inspect the diff, build/run, and either commit or discard just that change.
 
@@ -31,7 +31,7 @@ From the session folder, create a baseline before editing:
 
 ```bash
 git status
-git add CMakeLists.txt source/main.cpp
+git add CMakeLists.txt source/main.cpp source/Tempo.h source/Tempo.cpp
 git commit -m "Save session 7 baseline"
 ```
 
@@ -49,7 +49,7 @@ Add one additional source file explicitly to the target, without file globbing.
 
 ## Practice after class
 
-Move a calculation into a new `Tempo.cpp` file and declare it in `Tempo.h`. Add `Tempo.cpp` explicitly to the CMake target, build, then change only `Tempo.cpp` and rebuild. Note which source is recompiled and explain why `main.cpp` does not need recompiling.
+Add `twoBeatsMs(double bpm)` to `Tempo.h` and `Tempo.cpp`, and call it from `main.cpp`. Build, then change only its implementation in `Tempo.cpp` and rebuild. Note which source is recompiled and explain why `main.cpp` does not need recompiling.
 
 ## Build and run
 
